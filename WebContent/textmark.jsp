@@ -9,7 +9,7 @@
 <body>
     <h4>上传图片</h4>
     <hr/>
-    <form name = "form1" action="${pageContext.request.contextPath}/textwatermark.action" method="post" enctype="multipart/form-data">
+    <form name = "form1" action="${pageContext.request.contextPath}/textWaterMark.action" method="post" enctype="multipart/form-data">
         <input type="file" name="image"/>
         <input type="submit" value="上传需要添加文字水印的图片"/>
     </form>

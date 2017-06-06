@@ -8,6 +8,7 @@
 </head>
 <body>
     <a href="${pageContext.request.contextPath}/textmark.jsp">添加单个文字水印</a><br/>
+    <a href="${pageContext.request.contextPath}/multitextmark.jsp">添加多个文字水印</a><br/>
     <a href="${pageContext.request.contextPath}/imagemark.jsp">添加单个图片水印</a><br/>
 </body>
 </html>

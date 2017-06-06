@@ -19,14 +19,19 @@
     <!-- 用户模块的Action配置 -->
 	<package name="default" extends="struts-default">
 		
-		<action name="textwatermark" class="com.watermark.action.WaterMarkAction" method="textwatermark">
+		<action name="textWaterMark" class="com.watermark.action.WaterMarkAction" method="textWaterMark">
 	        <param name="uploadPath">/images</param>
 			<result name="success">showtextmark.jsp</result>
 		</action>
 		
-		<action name="imagewatermark" class="com.watermark.action.WaterMarkAction" method="imagewatermark">
+		<action name="imageWaterMark" class="com.watermark.action.WaterMarkAction" method="imageWaterMark">
 	        <param name="uploadPath">/images</param>
 			<result name="success">showimagemark.jsp</result>
+		</action>
+		
+		<action name="multiTextWaterMark" class="com.watermark.action.WaterMarkAction" method="multiTextWaterMark">
+	        <param name="uploadPath">/images</param>
+			<result name="success">showmultitextmark.jsp</result>
 		</action>
 				
 	</package>

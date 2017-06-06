@@ -16,15 +16,14 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import com.watermark.util.TextUtil;
 
 /**
- * 为图片添加单个文字水印
+ * 多个文字水印
  * @author aibinxiao
- * @date 2017年6月6日 上午11:54:47
+ * @date 2017年6月6日 下午4:08:56
  */
-public class TextMarkService implements MarkService {
+public class MultiTextMarkService implements MarkService {
 
 	@Override
 	public String watermark(File image, String imageFileName, String uploadPath, String realUploadPath) {
-		
 		String logoFileName = "logo_" + imageFileName;
 		OutputStream os = null;
 		
@@ -32,6 +31,8 @@ public class TextMarkService implements MarkService {
 			Image image2 = ImageIO.read(image); // ImageIO工具类，通过read方法去解码对应的图片文件，解码成一个相应的图片对象，在这个对象中就存储这图片的高度、宽度等信息
 			int width = image2.getWidth(null);
 			int height = image2.getHeight(null);
+			
+			// 创建缓存图片对象
 			BufferedImage bufferedImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);// 三个参数，图片的高度、宽度、颜色信息
 			// BufferedImage.TYPE_INT_RGB 图像颜色设置，用我们这个对象具有整数像素的8位RGB颜色
 			
@@ -49,24 +50,29 @@ public class TextMarkService implements MarkService {
 			int width1 = FONT_SIZE * TextUtil.getTextLength(MARK_TEXT);
 			int height1 = FONT_SIZE;
 			
-			// 计算原图与文字水印的高度、宽度差,防止水印过大，不能全部在图片上
-			int widthDiff = width - width1;
-			int heightDiff = height - height1;
-			
-			int x = X;
-			int y = Y;
-			
-			if(x>widthDiff){//如果x坐标大于宽度差，则表示文字水印无法在横向无法完整显示，所以设置为最大值，即宽度差
-				x = widthDiff;
-			}
-			
-			if(y>heightDiff){// 同x
-				y = heightDiff;
-			}
-			
 			// 设置文字水印的透明度
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP,ALPHA));
-			g.drawString(MARK_TEXT, x, y + FONT_SIZE);// 注意y坐标需要坐小的调整，需要加上文字大小的参数，因为y坐标值指向的位置是文字水印文本内容的下方，如果不加会导致文字水印靠上显示，导致文字水印显示不全
+			
+			// 倾斜图片，参数1：倾斜角度（单位：幅度），所需需要通过Math将角度转换位幅度，参数23： 为旋转圆心坐标，设置为图片的中心，即高度和宽度的1/2
+			g.rotate(Math.toRadians(30), bufferedImage.getWidth()/2, bufferedImage.getHeight()/2);
+			
+			// X,Y坐标的设置，由于倾斜之后，X，Y坐标都在一定程度增大了，但是为了避免不必要的计算，我们直接扩大一倍，所以X和Y的向左向上做一个移动
+			int x = -width/2;
+			int y = -height/2;
+			
+			// 将宽度扩展1/2
+			while(x < width * 1.5){
+				
+				y = -height/2;// 每次移动之后，y值做一个重新的设定，保证文字水印是从上到下的添加
+				
+				while(y < height * 1.5){ // 将高度扩展1/2，再通过循环最终完成多个水印的添加
+					g.drawString(MARK_TEXT, x, y);
+					y += height1 + 240; // 每次y坐标向下移动，并且在添加新的水印时，加上一定的高度间隔，设置为240px
+				}
+				
+				x += width1 + 240; // 每次x坐标向右移动，并且在添加新的水印时，加上一定的宽度间隔，设置为240px
+			}
+			
 			g.dispose();// 释放图片绘制工具，此时添加了水印的图片已经生成，但仍然在内存中
 			
 			// 创建文件输出流，指向最终目标文件
@@ -90,5 +96,5 @@ public class TextMarkService implements MarkService {
 		}
 		return uploadPath + File.separator + logoFileName;// 返回添加水印后的图像路径
 	}
-	
+
 }

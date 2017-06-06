@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加单个图片水印</title>
+<title>添加多个文字水印</title>
 </head>
 <body>
     <h4>上传图片</h4>
     <hr/>
-    <form name = "form1" action="${pageContext.request.contextPath}/imageWaterMark.action" method="post" enctype="multipart/form-data">
+    <form name = "form1" action="${pageContext.request.contextPath}/multiTextWaterMark.action" method="post" enctype="multipart/form-data">
         <input type="file" name="image"/>
-        <input type="submit" value="上传需要添加图片水印的图片"/>
+        <input type="submit" value="上传需要添加文字水印的图片"/>
     </form>
     <hr/>
     <a href="${pageContext.request.contextPath}/index.jsp">返回首页</a><br/>
