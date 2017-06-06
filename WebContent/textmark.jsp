@@ -7,10 +7,11 @@
 <title>添加单个文字水印</title>
 </head>
 <body>
+    <h4>添加单个文字水印</h4>
     <h4>上传图片</h4>
     <hr/>
     <form name = "form1" action="${pageContext.request.contextPath}/textWaterMark.action" method="post" enctype="multipart/form-data">
-        <input type="file" name="image"/>
+        <input type="file" name="image"/><br/>
         <input type="submit" value="上传需要添加文字水印的图片"/>
     </form>
     <hr/>

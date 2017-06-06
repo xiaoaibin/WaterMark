@@ -42,6 +42,30 @@
 	        <param name="uploadPath">/images</param>
 			<result name="success">showmultiimagemark.jsp</result>
 		</action>
+		
+		<!-- 批量处理单个文字水印 -->
+		<action name="batchTextWaterMark" class="com.watermark.action.BatchWaterMarkAction" method="textWaterMark">
+	        <param name="uploadPath">/images</param>
+			<result name="success">batchshowtextmark.jsp</result>
+		</action>
+		
+		<!-- 批量处理单个图片水印 -->
+		<action name="batchImageWaterMark" class="com.watermark.action.BatchWaterMarkAction" method="imageWaterMark">
+	        <param name="uploadPath">/images</param>
+			<result name="success">batchshowimagemark.jsp</result>
+		</action>
+		
+		<!-- 批量处理多个文字水印 -->
+		<action name="batchMultiTextWaterMark" class="com.watermark.action.BatchWaterMarkAction" method="multiTextWaterMark">
+	        <param name="uploadPath">/images</param>
+			<result name="success">batchshowmultitextmark.jsp</result>
+		</action>
+		
+		<!-- 批量处理多个图片水印 -->
+		<action name="batchMultiImageWaterMark" class="com.watermark.action.BatchWaterMarkAction" method="multiImageWaterMark">
+	        <param name="uploadPath">/images</param>
+			<result name="success">batchshowmultiimagemark.jsp</result>
+		</action>
 				
 	</package>
 </struts>
