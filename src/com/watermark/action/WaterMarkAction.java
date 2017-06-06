@@ -6,6 +6,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.watermark.entity.PicInfo;
+import com.watermark.service.ImageMarkService;
 import com.watermark.service.TextMarkService;
 import com.watermark.service.UploadService;
 
@@ -45,7 +46,6 @@ public class WaterMarkAction extends ActionSupport{
 	}
 	
 	PicInfo picInfo = new PicInfo();
-	
 
 	public PicInfo getPicInfo() {
 		return picInfo;
@@ -56,11 +56,11 @@ public class WaterMarkAction extends ActionSupport{
 	}
 
 	/**
-	 * 默认请求处理方法，接收用户的图片上传以及水印的添加和请求
+	 * 添加文字水印的图片上传以及添加文字水印的添加请求
 	 * @return
 	 * @throws Exception
 	 */
-	public String watermark() throws Exception{
+	public String textwatermark() throws Exception{
 		// 绝对路径，是基于我们的相对路径来获取的
 		String realUploadPath = ServletActionContext.getServletContext().getRealPath(uploadPath);
 		UploadService uploadService = new UploadService();
@@ -69,6 +69,24 @@ public class WaterMarkAction extends ActionSupport{
 		picInfo.setImageURL(uploadService.uploadImage(image, imageFileName, uploadPath, realUploadPath));
 		// 设置文字水印
 		picInfo.setLogoImageURL(textMarkService.watermark(image, imageFileName, uploadPath, realUploadPath));
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 添加文字水印的图片上传以及添加文字水印的添加请求
+	 * @return
+	 * @throws Exception
+	 */
+	public String imagewatermark() throws Exception{
+		// 绝对路径，是基于我们的相对路径来获取的
+		String realUploadPath = ServletActionContext.getServletContext().getRealPath(uploadPath);
+		UploadService uploadService = new UploadService();
+		ImageMarkService imageMarkService = new ImageMarkService();
+		// 设置图片上传后返回的相对路径
+		picInfo.setImageURL(uploadService.uploadImage(image, imageFileName, uploadPath, realUploadPath));
+		// 设置文字水印
+		picInfo.setLogoImageURL(imageMarkService.watermark(image, imageFileName, uploadPath, realUploadPath));
 		
 		return SUCCESS;
 	}

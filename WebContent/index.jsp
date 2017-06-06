@@ -7,11 +7,7 @@
 <title>图片上传主页</title>
 </head>
 <body>
-    <h4>上传图片</h4>
-    <hr/>
-    <form name = "form1" action="${pageContext.request.contextPath}/watermark.action" method="post" enctype="multipart/form-data">
-        <input type="file" name="image"/>
-        <input type="submit" value="上传图片"/>
-    </form>
+    <a href="${pageContext.request.contextPath}/textmark.jsp">添加单个文字水印</a><br/>
+    <a href="${pageContext.request.contextPath}/imagemark.jsp">添加单个图片水印</a><br/>
 </body>
 </html>

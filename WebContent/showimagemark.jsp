@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加水印后的图片</title>
+<title>单个图片水印添加效果展示</title>
 </head>
 <body>
     <table>
@@ -14,5 +14,7 @@
             <td width="50%"><img src='${pageContext.request.contextPath }<s:property value="picInfo.logoImageURL"/>' width="350" /></td>
         </tr>
     </table>
+    <hr/>
+    <a href="${pageContext.request.contextPath}/index.jsp">返回首页</a><br/>
 </body>
 </html>

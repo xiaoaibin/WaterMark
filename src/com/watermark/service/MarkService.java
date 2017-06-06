@@ -24,6 +24,8 @@ public interface MarkService {
 	
 	public static final float ALPHA = 0.3F; // 水印文字透明设置参数 30%
 	
+	public static final String LOGO = "logo.png"; // 图片水印的图片名称 ，事先将logo.png文件存储在images文件夹下，实现图片水印时我们会读取这个文件
+	
 	/**
 	 * 添加水印接口
 	 * @param image 需要添加水印的图片
