@@ -12,17 +12,17 @@ import java.io.File;
  */
 public interface MarkService {
 	
-	public static final String MARK_TEXT = "https://my.oschina.net/aibinxiao"; // 水印文字
+	public static final String MARK_TEXT = "oschina.aibinxiao"; // 水印文字
 	
 	public static final String FONT_NAME = "微软雅黑"; // 水印文字字体
 	public static final int FONT_STYLE = Font.BOLD; // 水印文字样式
-	public static final int FONT_SIZE = 50; // 水印文字大小，像素
-	public static final Color FONT_COLOR = Color.BLACK; // 水印文字颜色
+	public static final int FONT_SIZE = 80; // 水印文字大小，像素
+	public static final Color FONT_COLOR = Color.GREEN; // 水印文字颜色
 	
 	public static final int X = 10; // 水印文字X坐标
 	public static final int Y = 10; // 水印文字Y坐标
 	
-	public static final float ALPHA = 0.3F; // 水印文字透明设置参数 30%
+	public static final float ALPHA = 0.4F; // 水印文字透明设置参数 30%
 	
 	public static final String LOGO = "logo.png"; // 图片水印的图片名称 ，事先将logo.png文件存储在images文件夹下，实现图片水印时我们会读取这个文件
 	
