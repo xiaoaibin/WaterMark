@@ -15,5 +15,6 @@
     <a href="${pageContext.request.contextPath}/batchmultitextmark.jsp">批量处理添加多个文字水印</a><br/>
     <a href="${pageContext.request.contextPath}/batchimagemark.jsp">批量处理添加单个图片水印</a><br/>
     <a href="${pageContext.request.contextPath}/batchmultiimagemark.jsp">批量处理添加多个图片水印</a><br/>
+    <a href="${pageContext.request.contextPath}/thumbnail.jsp">获取缩略图</a><br/>
 </body>
 </html>

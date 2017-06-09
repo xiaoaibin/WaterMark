@@ -66,6 +66,12 @@
 	        <param name="uploadPath">/images</param>
 			<result name="success">batchshowmultiimagemark.jsp</result>
 		</action>
+		
+		<!-- 批获取图片缩略图 -->
+		<action name="thumbnail" class="com.watermark.action.ThumbnailAction" method="thumbnail">
+	        <param name="uploadPath">/images</param>
+			<result name="success">showthumbnail.jsp</result>
+		</action>
 				
 	</package>
 </struts>
